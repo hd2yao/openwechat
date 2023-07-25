@@ -21,6 +21,9 @@ const (
 // 详见 message_test.go
 type MessageType int
 
+// AppMessageType 以 Go 惯用形式定义了 PC 微信所有的官方APP消息类型
+type AppMessageType int
+
 const (
     MsgTypeText           MessageType = 1     // 文本消息
     MsgTypeImage          MessageType = 3     // 图片消息
@@ -38,4 +41,24 @@ const (
     MsgTypeMicroVideo     MessageType = 63    // 小视频消息
     MsgTypeSys            MessageType = 10000 // 系统消息
     MsgTypeRecalled       MessageType = 10002 // 消息撤回
+)
+
+const (
+    AppMsgTypeText                  AppMessageType = 1      // 文本消息
+    AppMsgTypeImg                   AppMessageType = 2      // 图片消息
+    AppMsgTypeAudio                 AppMessageType = 3      // 语音消息
+    AppMsgTypeVideo                 AppMessageType = 4      // 视频消息
+    AppMsgTypeUrl                   AppMessageType = 5      // 文章消息
+    AppMsgTypeAttach                AppMessageType = 6      // 附件消息
+    AppMsgTypeOpen                  AppMessageType = 7      // Open
+    AppMsgTypeEmoji                 AppMessageType = 8      // 表情消息
+    AppMsgTypeVoiceRemind           AppMessageType = 9      // VoiceRemind
+    AppMsgTypeScanGood              AppMessageType = 10     // ScanGood
+    AppMsgTypeGood                  AppMessageType = 13     // Good
+    AppMsgTypeEmotion               AppMessageType = 15     // Emotion
+    AppMsgTypeCardTicket            AppMessageType = 16     // 名片消息
+    AppMsgTypeRealtimeShareLocation AppMessageType = 17     // 地理位置消息
+    AppMsgTypeTransfers             AppMessageType = 2000   // 转账消息
+    AppMsgTypeRedEnvelopes          AppMessageType = 2001   // 红包消息
+    AppMsgTypeReaderType            AppMessageType = 100001 //自定义的消息
 )
