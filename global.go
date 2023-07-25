@@ -16,3 +16,26 @@ const (
         "2Pu3mpONaEumacjW4w6ipPnPw+g2TfywJjeEcpSZaP4Q3YV5HG8D6UjWA4GSkBKculWpdCMadx0usMomsSS/74QgpYqcPkmamB4nVv1JxczYIT" +
         "IqItIKjD35IGKAUwAA=="
 )
+
+// MessageType 以 Go 惯用形式定义了 PC 微信所有的官方消息类型
+// 详见 message_test.go
+type MessageType int
+
+const (
+    MsgTypeText           MessageType = 1     // 文本消息
+    MsgTypeImage          MessageType = 3     // 图片消息
+    MsgTypeVoice          MessageType = 34    // 语音消息
+    MsgTypeVerify         MessageType = 37    // 认证消息
+    MsgTypePossibleFriend MessageType = 40    // 好友推荐消息
+    MsgTypeShareCard      MessageType = 42    // 名片消息
+    MsgTypeVideo          MessageType = 43    // 视频消息
+    MsgTypeEmotion        MessageType = 47    // 表情消息
+    MsgTypeLocation       MessageType = 48    // 地理位置消息
+    MsgTypeApp            MessageType = 49    // APP 消息
+    MsgTypeVoip           MessageType = 50    // VOIP消息
+    MsgTypeVoipNotify     MessageType = 52    // VOIP 结束消息
+    MsgTypeVoipInvite     MessageType = 53    // VOIP 邀请
+    MsgTypeMicroVideo     MessageType = 63    // 小视频消息
+    MsgTypeSys            MessageType = 10000 // 系统消息
+    MsgTypeRecalled       MessageType = 10002 // 消息撤回
+)
