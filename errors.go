@@ -24,3 +24,7 @@ var (
     // ErrUserLogout define user logout error
     ErrUserLogout = errors.New("user logout")
 )
+
+func (r Ret) Error() string {
+    return r.String()
+}
