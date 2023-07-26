@@ -38,3 +38,36 @@ type BotLoginOption interface {
     OnError(*Bot, error) error
     OnSuccess(*Bot) error
 }
+
+// BotOptionGroup 是一个 BotLoginOption 的集合
+// 用户将多个 BotLoginOption 组合成一个 BotLoginOption
+type BotOptionGroup []BotLoginOption
+
+func (g BotOptionGroup) Prepare(bot *Bot) {
+    for _, option := range g {
+        option.Prepare(bot)
+    }
+}
+
+func (g BotOptionGroup) OnError(bot *Bot, err error) error {
+    // 当有一个 BotLoginOption 的 OnError 返回的 error == nil 时，就会停止执行后续的 BotLoginOption
+    for _, option := range g {
+        currentErr := option.OnError(bot, err)
+        if currentErr == nil {
+            return nil
+        }
+        if currentErr != nil {
+            return currentErr
+        }
+    }
+    return err
+}
+
+func (g BotOptionGroup) OnSuccess(bot *Bot) error {
+    for _, option := range g {
+        if err := option.OnSuccess(bot); err != nil {
+            return err
+        }
+    }
+    return nil
+}
